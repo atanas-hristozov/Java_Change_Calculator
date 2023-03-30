@@ -1,0 +1,54 @@
+import java.util.Scanner;
+import java.util.SimpleTimeZone;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Price amount:");
+        String input = scanner.nextLine();
+        double value = Double.parseDouble(input);
+        System.out.println("Given Cash");
+        String input2 = scanner.nextLine();
+        double paid = Double.parseDouble(input2);
+        int ednaStotinka = 0;
+        int dveStotinki = 0;
+        int petStotinki = 0;
+        int desetStotinki = 0;
+        int dvadesetStotinki = 0;
+        int petdesetStotinki = 0;
+        int edinLev = 0;
+        int resto = (int)((paid - value)*100);
+        edinLev = resto / 100;
+        petdesetStotinki = (resto - edinLev * 100) / 50;
+        dvadesetStotinki = (resto - edinLev * 100 - petdesetStotinki * 50) / 20;
+        desetStotinki = (resto - edinLev * 100 - petdesetStotinki * 50 - dvadesetStotinki * 20) / 10;
+        petStotinki = (resto - edinLev * 100 - petdesetStotinki * 50 - dvadesetStotinki * 20 - desetStotinki * 10) / 5;
+        dveStotinki  = (resto - edinLev * 100 - petdesetStotinki * 50 - dvadesetStotinki * 20 - desetStotinki * 10 - petStotinki * 5) / 2;
+        ednaStotinka  = resto - edinLev * 100 - petdesetStotinki * 50 - dvadesetStotinki * 20 - desetStotinki * 10 - petStotinki * 5 - dveStotinki * 2;
+        if (paid != value){
+            if (edinLev != 0) {
+                System.out.printf("%d x 1 Lev%n", edinLev);
+            }
+            if (petdesetStotinki != 0) {
+                System.out.printf("%d x 50 Stotinki%n", petdesetStotinki);
+            }
+            if (dvadesetStotinki != 0) {
+                System.out.printf("%d x 20 Stotinki%n", dvadesetStotinki);
+            }
+            if (desetStotinki != 0) {
+                System.out.printf("%d x 10 Stotinki%n", desetStotinki);
+            }
+            if (petStotinki != 0) {
+                System.out.printf("%d x 5 Stotinki%n", petStotinki);
+            }
+            if (dveStotinki != 0) {
+                System.out.printf("%d x 2 Stotinki%n", dveStotinki);
+            }
+            if (ednaStotinka != 0) {
+                System.out.printf("%d x 1 Stotinka%n", ednaStotinka);
+            }
+        } else {
+            System.out.println("No change");
+        }
+    }
+}
